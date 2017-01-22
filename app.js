@@ -13,27 +13,15 @@ function FoundItemsDirective() {
     scope: {
       found: '<',
       onRemove: '&'
-    },
-    controller: FoundItemsDirectiveController,
-    controllerAs: 'list',
-    bindToController: true
+    }
   };
   return ddo;
 }
 
-
-function FoundItemsDirectiveController() {
-  var list = this;
-
-  list.isEmpty = function () {
-    return list.found.length === 0;
-  }
-}
-
-NarrowItDownController.$inject = ['MenuSearchService', '$scope']
-function NarrowItDownController(MenuSearchService, $scope) {
+NarrowItDownController.$inject = ['MenuSearchService']
+function NarrowItDownController(MenuSearchService) {
   var narrow = this;
-  narrow.foundItems = [];
+  narrow.foundItems;
 
   narrow.getSearchResults = function() {
     var promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
